@@ -26,11 +26,15 @@ $humans = $request->getAll();
     <pre id="human_list">
     <?php
         foreach($humans as $human) {
+            // var_dump($human);
+            $id = $human->getId();
             print($human->getName());
             print($human->getpv());
             print($human->getAttack());
             print($human->getDefence());
-            ?><br><?php
+            ?>
+            <button class="select" id=<?php echo $id; ?>>Select</button>
+            <br><?php
         } ?>
     </pre>
     <div class="container fill">
@@ -52,6 +56,9 @@ $humans = $request->getAll();
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
+
+    //Ajout personnage dans base de données
+
     human_form = document.querySelector("#human_form");
     human_form.addEventListener("click", function(human_form){
 
@@ -94,4 +101,17 @@ $humans = $request->getAll();
             });
         }
     });
+</script>
+
+<script>
+
+    //Gestion bouton choix personnage bagarre
+
+    all_button_select = document.getElementsByClassName("select")
+    // all_button_select.foreach{
+    //     button.addEventListener("click", function(){
+    //         button.class = "selected"
+    //     })
+    }
+
 </script>

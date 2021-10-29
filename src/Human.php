@@ -6,6 +6,7 @@ spl_autoload_register(function ($className) {
 
 class Human
 {
+    private $id;
     private $name;
     private $pv;
     private $attack;
@@ -21,6 +22,7 @@ class Human
         else {
             $this->hydrates($data);
             $this->name = $data[0];
+            $this->id = $data[5];
         }
     }
 
@@ -50,6 +52,15 @@ class Human
         }
         $target->setPv($newPv);
     }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
 
     /**
      * @return mixed

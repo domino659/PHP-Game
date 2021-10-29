@@ -13,7 +13,7 @@ class Magician extends Human
 
     public function bolt(Human $target)
     {
-        $newPv = $target->getPv() - ($this->getMagie() - $target->getDefence() / 2);
+        $newPv = $target->getPv() - ($this->getAttack()*2 - $target->getDefence()/2);
         if ($newPv > $target->getPv()) {
             return;
         }

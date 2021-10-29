@@ -14,7 +14,7 @@ class HumanManager
         $connexion = new Bdd();
         $result = $connexion->request($requeteSql);
         foreach ($result as $human) {
-            $statEntity = [$human['name'], $human['pv'], $human['attack'], $human['defence'], $human['state']];
+            $statEntity = [$human['name'], $human['pv'], $human['attack'], $human['defence'], $human['state'], $human['id']];
             //var_dump($statEntity);
             switch ($human['class']) {
                 case 'Warrior':
