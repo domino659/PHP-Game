@@ -10,7 +10,7 @@
         $human_class = $_POST['human_class'];
         $request = new HumanManager();
         $request->addHuman($human_name, 100, 20, 10, $human_class);
-        // $request->getAll();
     }
     php_func();
+
 ?>

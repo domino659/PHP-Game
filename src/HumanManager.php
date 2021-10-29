@@ -1,4 +1,3 @@
-<!--Manager Parle a la DB-->
 <?php
 spl_autoload_register(function ($className) {
     require $className . '.php';
@@ -20,8 +19,8 @@ class HumanManager
         return $connexion->request($requeteSql);
     }
 
-    public function addHuman($name, $pv, $attack, $defence, $class) {
-        $requeteSql = "INSERT INTO human (name, pv, attack, defence, class) Values (:name, :pv, :attack, :defence, :class)";
+    public function addHuman($name, $pv, $attack, $defence, $class, $state) {
+        $requeteSql = "INSERT INTO human (name, pv, attack, defence, class, state) Values (:name, :pv, :attack, :defence, :class)";
         $connexion = new Bdd();
         $insert = $connexion->dbConnect()->prepare( $requeteSql );
         $insert->execute(array(
@@ -29,7 +28,8 @@ class HumanManager
                 'pv' => $pv,
                 'attack' => $attack,
                 'defence' => $defence,
-                'class' => $class
+                'class' => $class,
+                'state' => $state
         ));
     }
 

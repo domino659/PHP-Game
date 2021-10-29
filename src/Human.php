@@ -7,24 +7,45 @@ spl_autoload_register(function ($className) {
 class Human
 {
     private $name;
-    private $pv;
-    private $attack;
-    private $defence;
-    private $class;
+    private $state = false;
 
-    public function __construct(array  $data)
+    public function __construct($data)
     {
-        $this->hydrate($data);
+        if (is_string($data)) {
+            $this->hydrate($data);
+            $this->name = $data;
+        }
+        else {
+            $this->hydrates($data);
+            $this->name = $data[0];
+        }
     }
 
-    private function hydrate(array $data) {
+    private function hydrate($data) {
+        $method = 'set' . ucfirst($data);
+        if (is_callable([$this, $method])) {
+            $this->$method($data);
+            $this->name = $data;
+        }
+    }
+
+    private function hydrates(array $data) {
         foreach ($data as $key => $value) {
             $method = 'set' . ucfirst($key);
 
             if (is_callable([$this, $method])) {
                 $this->$method($value);
+                $this->name = $data[0];
             }
         }
+    }
+
+    public function attack(Human $target) {
+        $newPv = $target->getPv() - ($this->getAttack() - $target->getDefence());
+        if ($newPv > $target->getPv()) {
+            return;
+        }
+        $target->setPv($newPv);
     }
 
     /**
@@ -92,18 +113,18 @@ class Human
     }
 
     /**
-     * @return mixed
+     * @return bool
      */
-    public function getClass()
+    public function isState()
     {
-        return $this->class;
+        return $this->state;
     }
 
     /**
-     * @param mixed $class
+     * @param bool $state
      */
-    public function setClass($class)
+    public function setState($state)
     {
-        $this->class = $class;
+        $this->state = $state;
     }
 }
