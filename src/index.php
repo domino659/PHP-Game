@@ -22,18 +22,18 @@ $human = new Warrior('Sammy');
     <title>GamePhp</title>
   </head>
   <body>
-        <pre id="human_list">
-            <?php
-            for ($i=0; $i<count($humans); $i++) {
-                print($humans[$i]['id']);
-                print($humans[$i]['name']);
-                print($humans[$i]['pv']);
-                print($humans[$i]['attack']);
-                print($humans[$i]['defence']);
-                print($humans[$i]['class']);
-                ?><br><?php
-            } ?>
-        </pre>
+    <pre id="human_list">
+        <?php
+        for ($i=0; $i<count($humans); $i++) {
+            print($humans[$i]['id']);
+            print($humans[$i]['name']);
+            print($humans[$i]['pv']);
+            print($humans[$i]['attack']);
+            print($humans[$i]['defence']);
+            print($humans[$i]['class']);
+            ?><br><?php
+        } ?>
+    </pre>
     <pre>
         <?php
         print($human->getName());
