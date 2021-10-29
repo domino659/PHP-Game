@@ -5,28 +5,29 @@ spl_autoload_register(function ($className) {
 
 class HumanManager
 {
-    public $arena = [];
     public $statEntity = [];
 
-    public function getAll($arena)
+    public function getAll()
     {
+        $arena = [];
         $requeteSql = "SELECT * FROM human";
         $connexion = new Bdd();
         $result = $connexion->request($requeteSql);
         foreach ($result as $human) {
             $statEntity = [$human['name'], $human['pv'], $human['attack'], $human['defence'], $human['state']];
+            //var_dump($statEntity);
             switch ($human['class']) {
                 case 'Warrior':
-                    $arena += new Warrior($statEntity);
+                    array_push($arena, new Warrior($statEntity));
                     break;
                 case 'Archer':
-                    $arena = new Archer($statEntity);
+                    array_push($arena, new Archer($statEntity));
                     break;
                 case 'Tank':
-                    $arena = new Tank($statEntity);
+                    array_push($arena,  new Tank($statEntity));
                     break;
                 case 'Magician':
-                    $arena = new Magician($statEntity);
+                    array_push($arena, new Magician($statEntity));
                     break;
             }
         }

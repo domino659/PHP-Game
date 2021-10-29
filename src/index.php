@@ -5,12 +5,12 @@ require $className . '.php';
 
 $request = new HumanManager();
 $humans = $request->getAll();
-var_dump($humans[0]['class']);
+// var_dump($humans);
+// var_dump($humans[0]['class']);
 //$request->getOne(3);
 //$request->addHuman('Zeremy', 100, 20, 10, 'Zerem', false);
 //$request->addHuman('Sammy', 10, 2, 1, 'Sammy', true);
 //$request->removeHuman(23)
-$human = new Warrior('Sammy');
 //var_dump($human);
 
 ?>
@@ -24,24 +24,14 @@ $human = new Warrior('Sammy');
   </head>
   <body>
     <pre id="human_list">
-        <?php
-        for ($i=0; $i<count($humans); $i++) {
-            print($humans[$i]['id']);
-            print($humans[$i]['name']);
-            print($humans[$i]['pv']);
-            print($humans[$i]['attack']);
-            print($humans[$i]['defence']);
-            print($humans[$i]['class']);
+    <?php
+        foreach($humans as $human) {
+            print($human->getName());
+            print($human->getpv());
+            print($human->getAttack());
+            print($human->getDefence());
             ?><br><?php
         } ?>
-    </pre>
-    <pre>
-        <?php
-        print($human->getName());
-        print($human->getpv());
-        print($human->getAttack());
-        print($human->getDefence());
-        ?></><br>
     </pre>
     <div class="container fill">
         <form action="index.php">
@@ -49,10 +39,10 @@ $human = new Warrior('Sammy');
             <input type="text" name="Name" id="human_name" placeholder="Name" required>
             <select name="class" id="human_class" required>
                 <option value="">Pick your class</option>
-                <option value="warrior">Warrior</option>
-                <option value="archer">Archer</option>
-                <option value="tank">Tank</option>
-                <option value="magician">Magician</option>
+                <option value="Warrior">Warrior</option>
+                <option value="Archer">Archer</option>
+                <option value="Tank">Tank</option>
+                <option value="Magician">Magician</option>
             </select>
             <button id="human_form" type="submit" value="Create">Create</button>
         </form>
@@ -69,6 +59,15 @@ $human = new Warrior('Sammy');
 
         var human_name = $('#human_name').val();
         var human_class = $('#human_class').val();
+        var human_pv = 0;
+        var human_defense = 0;
+        var human_atk = 0;
+        switch(human_class){
+            case "Warrior" : human_pv = 150; human_atk = 30; human_defense = 10; break;
+            case "Archer" : human_pv = 100; human_atk = 30; human_defense = 5; break;
+            case "Tank" : human_pv = 200; human_atk = 10; human_defense = 20; break;
+            case "Magician" : human_pv = 100; human_atk = 20; human_defense = 5; break;
+        }
 
         if (human_name != "" && human_class != ""){
             $.ajax({
@@ -77,15 +76,18 @@ $human = new Warrior('Sammy');
                 data: {
                     human_name: human_name,
                     human_class: human_class,
+                    human_pv: human_pv,
+                    human_defense: human_defense,
+                    human_atk: human_atk,
                 },
                 success: function(data) { 
                     human_list = document.querySelector('#human_list')
                     char = document.createElement("pre")
                     switch(human_class){
-                        case "warrior" : char.textContent = human_name+" "+human_class+" 150 30 10"; break;
-                        case "archer" : char.textContent = human_name+" "+human_class+" 100 30 5"; break;
-                        case "tank" : char.textContent = human_name+" "+human_class+" 200 10 20"; break;
-                        case "magician" : char.textContent = human_name+" "+human_class+" 100 20 5 40"; break;
+                        case "Warrior" : char.textContent = human_name+" "+human_class+" "+human_pv+" "+human_atk+" "+human_defense; break;
+                        case "Archer" : char.textContent = human_name+" "+human_class+" "+human_pv+" "+human_atk+" "+human_defense; break;
+                        case "Tank" : char.textContent = human_name+" "+human_class+" "+human_pv+" "+human_atk+" "+human_defense; break;
+                        case "Magician" : char.textContent = human_name+" "+human_class+" "+human_pv+" "+human_atk+" "+human_defense; break;
                     }
                     human_list.appendChild(char)
                 }
