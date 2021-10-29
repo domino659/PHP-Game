@@ -12,5 +12,4 @@
         $request->addHuman($human_name, 100, 20, 10, $human_class, false);
     }
     php_func();
-
 ?>

@@ -80,7 +80,12 @@ $human = new Warrior('Sammy');
                 success: function(data) { 
                     human_list = document.querySelector('#human_list')
                     char = document.createElement("pre")
-                    char.textContent = human_name+" "+human_class+" 100 20 10"
+                    switch(human_class){
+                        case "warrior" : char.textContent = human_name+" "+human_class+" 150 30 10"; break;
+                        case "archer" : char.textContent = human_name+" "+human_class+" 100 30 5"; break;
+                        case "tank" : char.textContent = human_name+" "+human_class+" 200 10 20"; break;
+                        case "magician" : char.textContent = human_name+" "+human_class+" 100 20 5 40"; break;
+                    }
                     human_list.appendChild(char)
                 }
             });
