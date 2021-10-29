@@ -12,9 +12,9 @@ CREATE TABLE IF NOT EXISTS gamephp.human (
     PRIMARY KEY (id)
     );
 
-INSERT INTO gamephp.human (name, pv, attack, defence, class)
-VALUES ('Bob', 150, 20, 10, 'Warrior', false);
-INSERT INTO gamephp.human (name, pv, attack, defence, class)
+INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
+VALUES ('Bob', 150, 20, 10, 'Warrior', true);
+INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
 VALUES ('Domi', 200, 10, 20, 'Tank', false);
-INSERT INTO gamephp.human (name, pv, attack, defence, class)
+INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
 VALUES ('Lucien', 100, 25, 10, 'Wizzard', false);
