@@ -21,8 +21,7 @@ $human = new Warrior('Sammy');
     <title>GamePhp</title>
   </head>
   <body>
-    <p><?
-        var_dump($human);
+    <p id="human_list"><?
         for ($i=0; $i<count($humans); $i++) {
             print($humans[$i]['id']);
             print($humans[$i]['name']);
@@ -30,7 +29,7 @@ $human = new Warrior('Sammy');
             print($humans[$i]['attack']);
             print($humans[$i]['defence']);
             print($humans[$i]['class']);
-        ?></><br> <?php }?>
+        ?></><pre> <?php }?>
     </p>
     <p><?
         print($human['pv']);
@@ -52,7 +51,7 @@ $human = new Warrior('Sammy');
                 <option value="tank">Tank</option>
                 <option value="magician">Magician</option>
             </select>
-            <input id="human_form" type="submit" value="Create">
+            <button id="human_form" type="submit" value="Create">Create</button>
         </form>
     </div>
   </body>
@@ -60,23 +59,31 @@ $human = new Warrior('Sammy');
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-    e.preventDefault()
-    function ui(){
+    human_form = document.querySelector("#human_form");
+    human_form.addEventListener("click", function(human_form){
+
+        human_form.preventDefault();
+
         var human_name = $('#human_name').val();
         var human_class = $('#human_class').val();
 
-        $.ajax({
-            type: 'post',
-            url: 'test.php',
-            data: {
-                human_name: human_name,
-                human_class: human_class
-            },
-            success: function(data) {
-            }
-        });
-
-    }
+        if (human_name != "" && human_class != ""){
+            $.ajax({
+                type: 'post',
+                url: 'test.php',
+                data: {
+                    human_name: human_name,
+                    human_class: human_class,
+                },
+                success: function(data) { 
+                    human_list = document.querySelector('#human_list')
+                    char = document.createElement("pre")
+                    char.textContent = human_name+" "+human_class+" 100 20 10"
+                    human_list.appendChild(char)
+                }
+            });
+        }
+    });
 </script>
 
 
