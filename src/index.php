@@ -72,7 +72,7 @@ var_dump($human);
         if (human_name != "" && human_class != ""){
             $.ajax({
                 type: 'post',
-                url: 'test.php',
+                url: 'human_form.php',
                 data: {
                     human_name: human_name,
                     human_class: human_class,
