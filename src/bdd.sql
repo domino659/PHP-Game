@@ -17,4 +17,4 @@ VALUES ('Bob', 150, 20, 10, 'Warrior', true);
 INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
 VALUES ('Domi', 200, 10, 20, 'Tank', false);
 INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
-VALUES ('Lucien', 100, 25, 10, 'Wizzard', false);
+VALUES ('Lucien', 100, 25, 10, 'Magician', false);

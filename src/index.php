@@ -5,12 +5,13 @@ require $className . '.php';
 
 $request = new HumanManager();
 $humans = $request->getAll();
+var_dump($humans[0]['class']);
 //$request->getOne(3);
 //$request->addHuman('Zeremy', 100, 20, 10, 'Zerem', false);
 //$request->addHuman('Sammy', 10, 2, 1, 'Sammy', true);
 //$request->removeHuman(23)
 $human = new Warrior('Sammy');
-var_dump($human);
+//var_dump($human);
 
 ?>
 <!DOCTYPE html>
