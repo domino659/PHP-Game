@@ -10,7 +10,7 @@ $humans = $request->getAll();
 //$request->addHuman('Sammy', 10, 2, 1, 'Sammy', true);
 //$request->removeHuman(23)
 $human = new Warrior('Sammy');
-//var_dump($human);
+var_dump($human);
 
 ?>
 <!DOCTYPE html>
