@@ -31,7 +31,7 @@ $human = new Warrior('Sammy');
                 print($humans[$i]['attack']);
                 print($humans[$i]['defence']);
                 print($humans[$i]['class']);
-                ?><br>  <?php
+                ?><br><?php
             } ?>
         </pre>
     <pre>
