@@ -9,6 +9,8 @@ $humans = $request->getAll();
 //$request->addHuman('Zeremy', 100, 20, 10, 'Zerem');
 //$request->addHuman('Sammy', 10, 2, 1, 'Sammy');
 //$request->removeHuman(23)
+$human = new Warrior('Sammy');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,6 +22,7 @@ $humans = $request->getAll();
   </head>
   <body>
     <p><?
+        var_dump($human);
         for ($i=0; $i<count($humans); $i++) {
             print($humans[$i]['id']);
             print($humans[$i]['name']);
@@ -29,7 +32,15 @@ $humans = $request->getAll();
             print($humans[$i]['class']);
         ?></><br> <?php }?>
     </p>
-
+    <p><?
+        print($human['pv']);
+//        print($human[0]['name']);
+//        print($human[0]['pv']);
+//        print($human[0]['attack']);
+//        print($human[0]['defence']);
+//        print($human[0]['class']);
+        ?></><br>
+    </p>
     <div class="container fill">
         <form action="index.php">
             <label>Create your hero</label>
