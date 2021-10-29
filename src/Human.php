@@ -7,6 +7,9 @@ spl_autoload_register(function ($className) {
 class Human
 {
     private $name;
+    private $pv;
+    private $attack;
+    private $defence;
     private $state = false;
 
     public function __construct($data)
