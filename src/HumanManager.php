@@ -20,7 +20,7 @@ class HumanManager
     }
 
     public function addHuman($name, $pv, $attack, $defence, $class, $state) {
-        $requeteSql = "INSERT INTO human (name, pv, attack, defence, class, state) Values (:name, :pv, :attack, :defence, :class)";
+        $requeteSql = "INSERT INTO human (name, pv, attack, defence, class, state) Values (:name, :pv, :attack, :defence, :class, :state)";
         $connexion = new Bdd();
         $insert = $connexion->dbConnect()->prepare( $requeteSql );
         $insert->execute(array(

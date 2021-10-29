@@ -6,10 +6,11 @@ require $className . '.php';
 $request = new HumanManager();
 $humans = $request->getAll();
 //$request->getOne(3);
-//$request->addHuman('Zeremy', 100, 20, 10, 'Zerem');
-//$request->addHuman('Sammy', 10, 2, 1, 'Sammy');
+//$request->addHuman('Zeremy', 100, 20, 10, 'Zerem', false);
+//$request->addHuman('Sammy', 10, 2, 1, 'Sammy', true);
 //$request->removeHuman(23)
 $human = new Warrior('Sammy');
+//var_dump($human);
 
 ?>
 <!DOCTYPE html>
@@ -21,25 +22,26 @@ $human = new Warrior('Sammy');
     <title>GamePhp</title>
   </head>
   <body>
-    <p id="human_list"><?
-        for ($i=0; $i<count($humans); $i++) {
-            print($humans[$i]['id']);
-            print($humans[$i]['name']);
-            print($humans[$i]['pv']);
-            print($humans[$i]['attack']);
-            print($humans[$i]['defence']);
-            print($humans[$i]['class']);
-        ?></><pre> <?php }?>
-    </p>
-    <p><?
-        print($human['pv']);
-//        print($human[0]['name']);
-//        print($human[0]['pv']);
-//        print($human[0]['attack']);
-//        print($human[0]['defence']);
-//        print($human[0]['class']);
+        <pre id="human_list">
+            <?php
+            for ($i=0; $i<count($humans); $i++) {
+                print($humans[$i]['id']);
+                print($humans[$i]['name']);
+                print($humans[$i]['pv']);
+                print($humans[$i]['attack']);
+                print($humans[$i]['defence']);
+                print($humans[$i]['class']);
+                ?><br>  <?php
+            } ?>
+        </pre>
+    <pre>
+        <?php
+        print($human->getName());
+        print($human->getpv());
+        print($human->getAttack());
+        print($human->getDefence());
         ?></><br>
-    </p>
+    </pre>
     <div class="container fill">
         <form action="index.php">
             <label>Create your hero</label>
@@ -85,10 +87,3 @@ $human = new Warrior('Sammy');
         }
     });
 </script>
-
-
-
-
-
-
-
