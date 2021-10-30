@@ -13,8 +13,10 @@ CREATE TABLE IF NOT EXISTS gamephp.human (
     );
 
 INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
-VALUES ('Bob', 150, 20, 10, 'Warrior', true);
+VALUES ('Bob', 150, 30, 10, 'Warrior', true);
 INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
 VALUES ('Domi', 200, 10, 20, 'Tank', false);
 INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
-VALUES ('Lucien', 100, 25, 10, 'Magician', false);
+VALUES ('Lucien', 100, 20, 5, 'Magician', false);
+INSERT INTO gamephp.human (name, pv, attack, defence, class, state)
+VALUES ('Maurice', 100, 30, 5, 'Archer', false);
